@@ -4,7 +4,7 @@ from contextlib import asynccontextmanager
 
 from app.core.config import settings
 from app.core.database import engine, Base
-from app.api.routes import health, uploads, analysis, reports, billing, admin, feature_flags
+from app.api.routes import health, uploads, analysis, reports, billing, admin, feature_flags, webhooks
 
 
 @asynccontextmanager
@@ -39,3 +39,4 @@ app.include_router(reports.router, prefix="/api/reports", tags=["reports"])
 app.include_router(billing.router, prefix="/api/billing", tags=["billing"])
 app.include_router(admin.router, prefix="/api/admin", tags=["admin"])
 app.include_router(feature_flags.router, prefix="/api/feature-flags", tags=["feature-flags"])
+app.include_router(webhooks.router, prefix="/api/webhooks", tags=["webhooks"])

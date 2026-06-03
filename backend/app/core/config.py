@@ -10,6 +10,7 @@ class Settings(BaseSettings):
     CLERK_SECRET_KEY: str = ""
     CLERK_PUBLISHABLE_KEY: str = ""
     CLERK_JWT_VERIFICATION_KEY: str = ""
+    CLERK_WEBHOOK_SECRET: str = ""
 
     # AWS
     AWS_ACCESS_KEY_ID: str = ""
