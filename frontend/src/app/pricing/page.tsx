@@ -1,5 +1,16 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { Check } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Pricing",
+  description:
+    "Simple, transparent pricing. Start free with 3 analyses per month or go Pro for 100 analyses. No hidden fees.",
+  openGraph: {
+    title: "FocusAI Pricing — Simple, transparent plans",
+    description: "Start free with 3 analyses/month. Upgrade to Pro for 100/month at $29.",
+  },
+};
 
 const plans = [
   {

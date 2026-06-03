@@ -7,9 +7,41 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "FocusAI — Test Before You Publish",
+  title: {
+    default: "FocusAI — Test Before You Publish",
+    template: "%s — FocusAI",
+  },
   description:
-    "AI-powered pre-publication content review. Know how your content will perform before you hit publish.",
+    "AI-powered pre-publication content review. Know how your content will perform before you hit publish. Hook analysis, retention analysis, clarity analysis.",
+  keywords: [
+    "content review",
+    "AI content analysis",
+    "pre-publication review",
+    "hook analysis",
+    "video analysis",
+    "content score",
+    "FocusAI",
+  ],
+  authors: [{ name: "FocusAI" }],
+  creator: "FocusAI",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    siteName: "FocusAI",
+    title: "FocusAI — Test Before You Publish",
+    description:
+      "AI-powered pre-publication content review. Know how your content will perform before you hit publish.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "FocusAI — Test Before You Publish",
+    description:
+      "AI-powered pre-publication content review. Know how your content will perform before you hit publish.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
@@ -19,10 +51,10 @@ export default function RootLayout({
 }) {
   return (
     <ClerkProvider>
-      {/* suppressHydrationWarning prevents mismatch from the anti-FOUC script below */}
+      {/* suppressHydrationWarning prevents mismatch from the anti-FOUC theme script */}
       <html lang="en" suppressHydrationWarning>
         <head>
-          {/* Reads localStorage before React hydrates so there's no flash of wrong theme */}
+          {/* Reads localStorage before React hydrates to avoid flash of wrong theme */}
           <script
             dangerouslySetInnerHTML={{
               __html: `(function(){try{var t=localStorage.getItem('theme')||'dark';document.documentElement.classList.toggle('dark',t==='dark')}catch(e){}})();`,

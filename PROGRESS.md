@@ -69,6 +69,38 @@ GitHub: https://github.com/Yonasrs/focusai-platform
 
 ---
 
+## UI Polish ✅ Complete — 2026-06-03
+
+### Landing Page Redesign
+- [x] `PublicNav` component — sticky nav with logo, Pricing link, Sign In / Get Started
+- [x] Hero section — badge, H1, subtitle, dual CTA, mock score card
+- [x] Stats strip — `< 60s`, `3 AI experts`, `3 personas`, `1 final score`
+- [x] Features section — Hook, Retention, Clarity, AudienceLab cards
+- [x] How It Works — 3-step breakdown
+- [x] CTA section + footer
+
+### Placeholder Pages (Coming Soon)
+- [x] `/reports` — FileText icon, milestone note
+- [x] `/history` — History icon, milestone note
+- [x] `/settings` — Settings icon, milestone note
+- [x] `/billing` — CreditCard icon, milestone note
+- [x] `ComingSoon` reusable component with animated pulse badge
+
+### Favicon
+- [x] `frontend/src/app/icon.svg` — square crosshair icon (auto-picked up by Next.js as favicon)
+
+### Error Pages
+- [x] `app/not-found.tsx` — custom 404 with design system colors + Home / Dashboard links
+- [x] `app/error.tsx` — global error boundary (client component) with Try Again / Back to Home
+
+### SEO Meta Tags
+- [x] Root `layout.tsx` — title template `%s — FocusAI`, full OpenGraph + Twitter card, keywords, robots
+- [x] `/` — page-level OG + Twitter meta
+- [x] `/pricing` — page-level metadata
+- [x] `/dashboard`, `/reports`, `/history`, `/settings`, `/billing` — individual page titles
+
+---
+
 ## Logo & Theme Toggle ✅ Complete — 2026-06-03
 - [x] `frontend/public/logo.svg` — light-mode logo (dark text, purple "AI")
 - [x] `frontend/public/logo-dark.svg` — dark-mode logo (white text, dark background)
