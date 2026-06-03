@@ -5,7 +5,7 @@ from contextlib import asynccontextmanager
 from app.core.config import settings
 from app.core.database import engine, Base, AsyncSessionLocal
 from app.services.prompt_service import seed_prompts
-from app.api.routes import health, uploads, analysis, reports, billing, admin, feature_flags, webhooks
+from app.api.routes import health, uploads, analysis, reports, billing, admin, feature_flags, webhooks, users
 
 
 @asynccontextmanager
@@ -42,3 +42,4 @@ app.include_router(billing.router, prefix="/api/billing", tags=["billing"])
 app.include_router(admin.router, prefix="/api/admin", tags=["admin"])
 app.include_router(feature_flags.router, prefix="/api/feature-flags", tags=["feature-flags"])
 app.include_router(webhooks.router, prefix="/api/webhooks", tags=["webhooks"])
+app.include_router(users.router, prefix="/api/users", tags=["users"])

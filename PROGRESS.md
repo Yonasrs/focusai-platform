@@ -69,6 +69,14 @@ GitHub: https://github.com/Yonasrs/focusai-platform
 
 ---
 
+## Settings Page ✅ Complete — 2026-06-03
+- [x] `backend/app/api/routes/users.py` — `GET /api/users/me` returns plan, credits_remaining, email
+- [x] `backend/app/main.py` — users router registered at `/api/users`
+- [x] `settings/SettingsClient.tsx` — client component: profile card (avatar, name, email), edit-name form (saves to Clerk via `user.update()`), plan & credits card with upgrade CTA
+- [x] `settings/page.tsx` — server wrapper with metadata, renders SettingsClient
+
+---
+
 ## Dashboard Layout Redesign ✅ Complete — 2026-06-03
 - [x] `DashboardShell.tsx` — client component owning `sidebarOpen` state, wires SideNav ↔ Breadcrumb
 - [x] `SideNav.tsx` — rewritten: props-driven open/close, logo (dark/light), active-item highlight, user dropdown (My Account / Settings / Billing / Sign Out via Clerk), ThemeToggle, mobile close button, backdrop overlay
