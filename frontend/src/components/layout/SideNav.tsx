@@ -96,7 +96,7 @@ export default function SideNav({ isOpen, onClose }: SideNavProps) {
       >
         {/* ── Logo header ───────────────────────────────── */}
         <header className="flex items-center justify-between gap-x-2 p-4 border-b border-gray-200 dark:border-white/5">
-          <Link href="/dashboard" onClick={onClose} aria-label="FocusAI home">
+          <Link href="/" onClick={onClose} aria-label="FocusAI home">
             <Image
               src="/logo-dark.svg"
               alt="FocusAI"
