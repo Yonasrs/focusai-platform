@@ -1,6 +1,6 @@
 # FocusAI — Milestone Progress
 
-Last updated: 2026-06-03 (pricing page added)
+Last updated: 2026-06-03
 GitHub: https://github.com/Yonasrs/focusai-platform
 
 | Milestone | Title | Status |
@@ -66,6 +66,17 @@ GitHub: https://github.com/Yonasrs/focusai-platform
 - [x] `frontend/src/hooks/useUpload.ts` — upload state machine (idle → uploading → success/error), axios progress tracking, Clerk JWT injection
 - [x] `/upload` page — fully wired: drag & drop, file preview, client-side type + size + duration validation, progress bar, loading state, error messages, redirect to `/reports/{job_id}` on success
 - [x] `/reports/[id]` page — job status display, auto-polls every 4s while queued/running, upload details card, animated progress bar
+
+---
+
+## Logo & Theme Toggle ✅ Complete — 2026-06-03
+- [x] `frontend/public/logo.svg` — light-mode logo (dark text, purple "AI")
+- [x] `frontend/public/logo-dark.svg` — dark-mode logo (white text, dark background)
+- [x] `frontend/src/components/ThemeProvider.tsx` — localStorage-backed theme context, anti-FOUC inline script in `<head>`
+- [x] `frontend/src/components/ThemeToggle.tsx` — Sun/Moon icon button wired to ThemeProvider
+- [x] `SideNav.tsx` — logo swap (`logo.svg` / `logo-dark.svg`) via `dark:` visibility classes; ThemeToggle in footer
+- [x] `layout.tsx` — ThemeProvider wrapper, `suppressHydrationWarning`, body uses `dark:` variants
+- [x] `globals.css` — `.card`, `.btn-secondary`, `.input` updated with light-mode variants
 
 ---
 

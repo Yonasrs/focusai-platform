@@ -16,7 +16,7 @@
 
 @layer components {
   .card {
-    @apply bg-dark-card rounded-xl border border-white/5 p-6;
+    @apply bg-white border border-gray-200 rounded-xl p-6 dark:bg-dark-card dark:border-white/5;
   }
 
   .btn-primary {
@@ -24,10 +24,10 @@
   }
 
   .btn-secondary {
-    @apply bg-white/10 hover:bg-white/15 text-dark-text font-semibold px-5 py-2.5 rounded-lg transition-colors;
+    @apply bg-gray-100 hover:bg-gray-200 text-gray-900 font-semibold px-5 py-2.5 rounded-lg transition-colors dark:bg-white/10 dark:hover:bg-white/15 dark:text-dark-text;
   }
 
   .input {
-    @apply bg-dark-card border border-white/10 text-dark-text placeholder:text-dark-muted rounded-lg px-4 py-2.5 w-full focus:outline-none focus:ring-2 focus:ring-brand-primary/50 transition;
+    @apply bg-white border border-gray-300 text-gray-900 placeholder:text-gray-400 rounded-lg px-4 py-2.5 w-full focus:outline-none focus:ring-2 focus:ring-brand-primary/50 transition dark:bg-dark-card dark:border-white/10 dark:text-dark-text dark:placeholder:text-dark-muted;
   }
 }
