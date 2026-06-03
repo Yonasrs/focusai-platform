@@ -7,7 +7,7 @@ GitHub: https://github.com/Yonasrs/focusai-platform
 |-----------|-------|--------|
 | **M0** | Foundation | ✅ Complete |
 | **M1** | Upload Platform | ✅ Complete |
-| **M2** | Analysis Engine Skeleton | ⏳ Pending |
+| **M2** | Analysis Engine Skeleton | ✅ Complete |
 | **M3** | Hook Expert | ⏳ Pending |
 | **M4** | Retention Expert | ⏳ Pending |
 | **M5** | Clarity Expert | ⏳ Pending |
@@ -69,13 +69,18 @@ GitHub: https://github.com/Yonasrs/focusai-platform
 
 ---
 
-## Milestone 2 — Analysis Engine Skeleton
+## Milestone 2 — Analysis Engine Skeleton ✅ Complete — 2026-06-03
+
 **Goal:** Orchestration layer that routes uploads to enabled experts and returns structured results.
-- [ ] AnalysisEngine class
-- [ ] Expert interface/base class
-- [ ] Feature-flag-gated expert loading
-- [ ] Job status tracking (queued → running → complete)
-- [ ] Prompt versioning infrastructure
+- [x] `backend/app/experts/base.py` — `AbstractExpert` + `ExpertResult` dataclass
+- [x] `backend/app/experts/hook_expert.py` — `HookExpert` stub (real prompt in M3)
+- [x] `backend/app/experts/retention_expert.py` — `RetentionExpert` stub (M4)
+- [x] `backend/app/experts/clarity_expert.py` — `ClarityExpert` stub (M5)
+- [x] `backend/app/services/prompt_service.py` — `seed_prompts` (seeded on startup) + `get_active_prompt`
+- [x] `backend/app/services/analysis_engine.py` — `run_analysis`: queued→running→complete/failed, feature-flag-gated experts, saves `ExpertReview` + `FinalReport`, moderator stub averages scores
+- [x] Feature-flag-gated expert loading via `HOOK_EXPERT` / `RETENTION_EXPERT` / `CLARITY_EXPERT` flags (all default True)
+- [x] Job status tracking (queued → running → complete | failed) with `started_at` / `completed_at` timestamps
+- [x] Upload endpoint triggers `run_analysis_task` as a FastAPI `BackgroundTask` after each upload
 
 ---
 

@@ -1,6 +1,6 @@
 from typing import Annotated, Optional
 
-from fastapi import APIRouter, Depends, File, Form, HTTPException, UploadFile, status
+from fastapi import APIRouter, BackgroundTasks, Depends, File, Form, HTTPException, UploadFile, status
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
 
@@ -9,6 +9,7 @@ from app.core.database import get_db
 from app.models.analysis_job import AnalysisJob
 from app.models.upload import Upload
 from app.schemas.upload import JobResponse, JobStatusResponse, UploadCreateResponse, UploadResponse
+from app.services.analysis_engine import run_analysis_task
 from app.services.upload_service import create_upload
 from app.services.user_service import get_or_create_user
 
@@ -21,6 +22,7 @@ _MAX_READ = 1024 * 1024 * 1024 + 1
 @router.post("/", response_model=UploadCreateResponse, status_code=status.HTTP_201_CREATED)
 async def upload_content(
     content_type: Annotated[str, Form()],
+    background_tasks: BackgroundTasks,
     db: AsyncSession = Depends(get_db),
     clerk_user_id: str = Depends(get_current_user_id),
     file: Annotated[Optional[UploadFile], File()] = None,
@@ -69,6 +71,8 @@ async def upload_content(
         duration_seconds=duration_seconds,
         db=db,
     )
+
+    background_tasks.add_task(run_analysis_task, job.id)
 
     return UploadCreateResponse(
         upload=UploadResponse.model_validate(upload),
