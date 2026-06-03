@@ -1,11 +1,12 @@
 # FocusAI — Milestone Progress
 
-Last updated: 2026-06-03
+Last updated: 2026-06-03 (pricing page added)
+GitHub: https://github.com/Yonasrs/focusai-platform
 
 | Milestone | Title | Status |
 |-----------|-------|--------|
 | **M0** | Foundation | ✅ Complete |
-| **M1** | Upload Platform | ⏳ Pending |
+| **M1** | Upload Platform | ✅ Complete |
 | **M2** | Analysis Engine Skeleton | ⏳ Pending |
 | **M3** | Hook Expert | ⏳ Pending |
 | **M4** | Retention Expert | ⏳ Pending |
@@ -34,18 +35,37 @@ Last updated: 2026-06-03
 - [x] `.env.example` (root, frontend, backend)
 - [x] `README.md`
 - [x] Project directory structure established
+- [x] Git repository initialized
+- [x] Initial commit — 58 files, 1,991 lines
+- [x] Pushed to GitHub: https://github.com/Yonasrs/focusai-platform
 
-**Status: Complete**
+**Status: ✅ Complete — 2026-06-03**
 
 ---
 
-## Milestone 1 — Upload Platform
+## Additional Pages (between M0 and M1)
+- [x] `/pricing` page — Free (3/mo, $0) and Pro (100/mo, $29) plans, design system colors, feature comparison, "Most Popular" badge on Pro
+- [x] `/upload` page — Video/Image/Text tabs, drag & drop dropzone, file type + size validation, plan limits banner, Free vs Pro comparison table, "Analyze Content" CTA (wired to engine in M2)
+
+---
+
+## Milestone 1 — Upload Platform ✅ Complete — 2026-06-03
+
 **Goal:** Users can upload video, image, or text content to S3 with validation and job tracking.
-- [ ] S3 upload integration
-- [ ] File type/size validation (Free vs Pro limits)
-- [ ] Upload UI component
-- [ ] `uploads` DB table integration
-- [ ] `analysis_jobs` creation on upload
+
+### Backend
+- [x] `backend/app/services/s3_service.py` — boto3 S3 upload via `asyncio.to_thread`, safe key generation (`uploads/{user_id}/{upload_id}/{filename}`)
+- [x] `backend/app/services/user_service.py` — `get_or_create_user` upsert from Clerk ID
+- [x] `backend/app/services/upload_service.py` — credit check, size limit (Free: 100 MB / Pro: 1 GB), magic-byte MIME validation (JPEG, PNG, MP4), video duration check, S3 upload, `uploads` + `analysis_jobs` DB rows, credit deduction
+- [x] `backend/app/schemas/upload.py` — Pydantic response models
+- [x] `POST /api/uploads/` — multipart upload endpoint (video/image/text)
+- [x] `GET /api/uploads/` — list user uploads
+- [x] `GET /api/uploads/jobs/{job_id}` — job status endpoint
+
+### Frontend
+- [x] `frontend/src/hooks/useUpload.ts` — upload state machine (idle → uploading → success/error), axios progress tracking, Clerk JWT injection
+- [x] `/upload` page — fully wired: drag & drop, file preview, client-side type + size + duration validation, progress bar, loading state, error messages, redirect to `/reports/{job_id}` on success
+- [x] `/reports/[id]` page — job status display, auto-polls every 4s while queued/running, upload details card, animated progress bar
 
 ---
 
