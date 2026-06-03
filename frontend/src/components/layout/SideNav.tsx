@@ -186,7 +186,7 @@ export default function SideNav({ isOpen, onClose }: SideNavProps) {
                   className="absolute bottom-full left-0 right-0 mb-1.5 rounded-xl border border-gray-200 dark:border-white/10 bg-white dark:bg-dark-card shadow-lg overflow-hidden z-50"
                 >
                   <Link
-                    href="/dashboard"
+                    href="/account"
                     role="menuitem"
                     onClick={() => { setDropdownOpen(false); onClose(); }}
                     className="flex items-center gap-3 px-4 py-2.5 text-sm text-gray-700 dark:text-dark-text hover:bg-gray-50 dark:hover:bg-white/5 transition-colors"
