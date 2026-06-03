@@ -16,6 +16,7 @@ export default function SettingsClient() {
 
   const [planData, setPlanData] = useState<UserPlan | null>(null);
   const [planLoading, setPlanLoading] = useState(true);
+  const [planError, setPlanError] = useState(false);
 
   // Edit-name state
   const [editing, setEditing] = useState(false);
@@ -35,6 +36,9 @@ export default function SettingsClient() {
           { headers: { Authorization: `Bearer ${token}` } }
         );
         if (res.ok) setPlanData(await res.json());
+        else setPlanError(true);
+      } catch {
+        setPlanError(true);
       } finally {
         setPlanLoading(false);
       }
@@ -223,6 +227,10 @@ export default function SettingsClient() {
           <div className="flex items-center gap-2 text-gray-500 dark:text-dark-muted text-sm">
             <Loader2 size={16} className="animate-spin" /> Loading…
           </div>
+        ) : planError ? (
+          <p className="text-sm text-gray-400 dark:text-dark-muted/70">
+            Could not load plan data — make sure the backend is running.
+          </p>
         ) : (
           <>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
