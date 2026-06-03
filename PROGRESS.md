@@ -69,6 +69,15 @@ GitHub: https://github.com/Yonasrs/focusai-platform
 
 ---
 
+## Dashboard Layout Redesign ✅ Complete — 2026-06-03
+- [x] `DashboardShell.tsx` — client component owning `sidebarOpen` state, wires SideNav ↔ Breadcrumb
+- [x] `SideNav.tsx` — rewritten: props-driven open/close, logo (dark/light), active-item highlight, user dropdown (My Account / Settings / Billing / Sign Out via Clerk), ThemeToggle, mobile close button, backdrop overlay
+- [x] `Breadcrumb.tsx` — route-aware breadcrumb (usePathname), hamburger trigger for mobile, chevron separator, UUID segments collapsed to "Detail"
+- [x] `(dashboard)/layout.tsx` — auth guard then renders DashboardShell
+- [x] Mobile sidebar: `fixed` overlay with `backdrop-blur`, slide animation; Desktop: `lg:static` in flex layout
+
+---
+
 ## UI Polish ✅ Complete — 2026-06-03
 
 ### Landing Page Redesign
